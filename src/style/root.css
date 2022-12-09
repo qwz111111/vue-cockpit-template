@@ -1,0 +1,71 @@
+:root {
+  /* 行为相关颜色 */
+  --color-primary: #007aff;
+  --color-success: #4cd964;
+  --color-warning: #f0ad4e;
+  --color-error: #dd524d;
+
+  --color-primary-1: #09edfe;
+  --color-primary-2: #ffd901;
+
+  /* 文字基本颜色 */
+  --text-color: rgba(0, 0, 0, 0.85); /* 基本色 */
+  --text-color-inverse: rgba(255, 255, 255, 0.85); /* 反色 */
+  --text-color-grey: #999; /* 辅助灰色，如加载更多的提示信息 */
+  --text-color-placeholder: #808080;
+  --text-color-disable: #c0c0c0;
+
+  /* 背景颜色 */
+  --bg-color: #ffffff;
+  --bg-color-grey: #f8f8f8;
+  --bg-color-hover: #f1f1f1; /* 点击状态颜色 */
+  --bg-color-mask: rgba(0, 0, 0, 0.5); /* 遮罩颜色 */
+
+  /* 边框颜色 */
+  --border-color: #c8c7cc;
+
+  /* 尺寸变量 */
+
+  /* 文字尺寸 */
+  --font-size-xs: 0.12rem;
+  --font-size-sm: 0.14rem;
+  --font-size-base: 0.16rem;
+  --font-size-lg: 0.18rem;
+  --font-size-xl: 0.2rem;
+  --font-size-2xl: 0.22rem;
+  --font-size-3xl: 0.24rem;
+  --font-size-4xl: 0.26rem;
+  --font-size-5xl: 0.28rem;
+
+  /* 图片尺寸 */
+  --img-size-sm: 0.2rem;
+  --img-size-base: 0.26rem;
+  --img-size-lg: 4rem;
+
+  /* Border Radius */
+  --border-radius-sm: 0.02rem;
+  --border-radius-base: 0.03rem;
+  --border-radius-lg: 0.06rem;
+  --border-radius-circle: 50%;
+
+  /* 水平间距 */
+  --spacing-row-sm: 0.05rem;
+  --spacing-row-base: 0.1rem;
+  --spacing-row-lg: 0.15rem;
+
+  /* 垂直间距 */
+  --spacing-col-sm: 0.04rem;
+  --spacing-col-base: 0.08rem;
+  --spacing-col-lg: 0.12rem;
+
+  /* 透明度 */
+  --opacity-disabled: 0.3; /* 组件禁用态的透明度 */
+
+  /* 文章场景相关 */
+  --color-title: #2c405a; /* 文章标题颜色 */
+  --font-size-title: var(--font-size-xl);
+  --color-subtitle: #555555; /* 二级标题颜色 */
+  --font-size-subtitle: var(--font-size-lg);
+  --color-paragraph: #3f536e; /* 文章段落颜色 */
+  --font-size-paragraph: 0.15rem;
+}

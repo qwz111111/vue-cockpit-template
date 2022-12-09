@@ -1,0 +1,84 @@
+/****************************************************************
+                            大盒子
+****************************************************************/
+.main-box {
+  width: 100%;
+  height: 100%;
+}
+/****************************************************************
+                            弹性布局
+****************************************************************/
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-around-center {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.flex-between-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.flex-evenly-center {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.flex-start-center {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.flex-end-center {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.flex-center-start {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.flex-center-end {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+/****************************************************************
+                            对齐方式
+****************************************************************/
+.horizontally-center {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.vertically-center {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.horizontally-vertically-center {
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.margin-auto {
+  margin: 0 auto;
+}
+/****************************************************************
+                            文字长度限制
+****************************************************************/
+.hidden-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.transition-300 {
+  transition: all 300ms;
+  cursor: pointer;
+}
