@@ -49,14 +49,13 @@
       </div>
     </div>
     <div class="centent">
-      <template v-if="$slots.default"><slot /> </template>
-      <template v-else>
+      <slot>
         <img
           class="horizontally-vertically-center none-img"
           src="./images/kfz.png"
           alt="开发中"
         />
-      </template>
+      </slot>
     </div>
   </div>
 </template>
