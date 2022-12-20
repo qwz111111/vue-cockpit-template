@@ -7,7 +7,7 @@
 
 <script>
 import { nowSize } from '@/utils/common.js'
-import { debounce } from '@/utils/utils.js'
+import { debounce } from '@/utils/util.js'
 import axios from '@/api/axios.js'
 
 export default {

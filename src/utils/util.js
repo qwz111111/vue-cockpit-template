@@ -1,4 +1,9 @@
-// 防抖
+/**
+ * 防抖
+ * @param {Function} fn 函数
+ * @param {Number} delay
+ * @return {Function}
+ */
 export const debounce = (fn, delay = 300) => {
   let timer
   return function () {
@@ -8,7 +13,13 @@ export const debounce = (fn, delay = 300) => {
     }, delay)
   }
 }
-// 节流
+
+/**
+ * 节流
+ * @param {Function} fn 函数
+ * @param {Number} delay
+ * @return {Function}
+ */
 export const throttle = (fn, delay = 1000) => {
   let timer
   return function () {
@@ -19,7 +30,13 @@ export const throttle = (fn, delay = 1000) => {
     }, delay)
   }
 }
-// 单例
+
+/**
+ * 单例模式
+ * @param {Function} fn 函数
+ * @param {Number} delay
+ * @return {Function}
+ */
 export const single = fn => {
   let result
   return function () {
@@ -29,14 +46,12 @@ export const single = fn => {
     return result
   }
 }
-// 数据类型
-export const type = param => {
-  return Object.prototype.toString.call(param)
-}
-/*
+
+/**
  * 标准时间格式转化
- * @argument {String} date  时间戳
- * @argument {String} formatStr  时间格式，例：'yyyy年M月d日'返回'2019年9月9日'、'yyyy-MM-dd HH:mm:ss'返回'2019-09-09 14:36:49'
+ * @param {String} date  时间戳
+ * @param {String} formatStr  时间格式，例：'yyyy年M月d日'返回'2019年9月9日'、'yyyy-MM-dd HH:mm:ss'返回'2019-09-09 14:36:49'
+ * @return {String}
  */
 export const transDate = (date, formatStr) => {
   date = date || new Date()
