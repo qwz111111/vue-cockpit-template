@@ -45,7 +45,7 @@ export default {
     initMap() {
       this.mapDraw = L.map(this.$refs.BaseTianDiTuMap, {
         center: this.center,
-        zoomControl: this.isControls,
+        zoomControl: false,
         zoom: this.zoom,
         maxZoom: 18,
         minZoom: 9,
