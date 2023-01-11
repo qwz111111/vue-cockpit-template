@@ -100,7 +100,9 @@ export default {
           itemStyle: {
             color: '#148cea',
             borderColor: this.options?.normalBorderColor || '#a5e6fb',
-            borderWidth: 1
+            borderWidth: 0.5,
+            shadowColor: 'rgba(0, 0, 0, 0.5)',
+            shadowBlur: 10
             // areaColor: this.options?.emphasisAreaColor || '#cdac34'
           },
           emphasis: {
