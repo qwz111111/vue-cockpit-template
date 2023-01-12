@@ -72,6 +72,9 @@ export default {
         layer.on('click', layer => {
           obj.click && obj.click(layer, obj)
         })
+        layer.on('dblclick', layer => {
+          obj.dblclick && obj.dblclick(layer, obj)
+        })
       })
       return layerPolygon
     },
@@ -94,6 +97,9 @@ export default {
       layerPoint.eachLayer(layer => {
         layer.on('click', () => {
           obj.click && obj.click(layer, obj)
+        })
+        layer.on('dblclick', () => {
+          obj.dblclick && obj.dblclick(layer, obj)
         })
       })
       return this.markerClusterGroup ? clusterMarkers : layerPoint
