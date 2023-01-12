@@ -68,9 +68,9 @@ export default {
     handlePolygon(obj) {
       const layerPolygon = L.geoJSON(obj.res, { style: () => obj.option })
       layerPolygon.eachLayer(layer => {
-        obj.funLayer && obj.funLayer(layer, obj)
+        obj.handleLayer && obj.handleLayer(layer, obj)
         layer.on('click', layer => {
-          obj.funClick && obj.funClick(layer, obj)
+          obj.click && obj.click(layer, obj)
         })
       })
       return layerPolygon
@@ -86,14 +86,14 @@ export default {
       const layerPoint = L.geoJSON(obj.res, {
         pointToLayer: (feature, latlng) => {
           return (
-            obj.funPointToLayer &&
-            obj.funPointToLayer(clusterMarkers, feature, latlng, obj)
+            obj.handlePointToLayer &&
+            obj.handlePointToLayer(clusterMarkers, feature, latlng, obj)
           )
         }
       })
       layerPoint.eachLayer(layer => {
         layer.on('click', () => {
-          obj.funClick && obj.funClick(layer, obj)
+          obj.click && obj.click(layer, obj)
         })
       })
       return this.markerClusterGroup ? clusterMarkers : layerPoint
