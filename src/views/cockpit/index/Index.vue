@@ -1,5 +1,5 @@
 <template>
-  <div class="cockpit-index">111</div>
+  <div class="cockpit-index text-cyan-200">111</div>
 </template>
 
 <script>
