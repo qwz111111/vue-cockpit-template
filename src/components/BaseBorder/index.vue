@@ -134,13 +134,13 @@ export default {
     background: url(./images/border1.png) left top no-repeat;
     background-size: 100% 106%;
     height: 5vh;
-    padding-left: 0.4rem;
+    padding-left: 2.5rem;
     .title,
     .subtitle {
       font-size: var(--font-size-xl);
       color: var(--text-color-inverse);
       font-weight: 700;
-      margin-right: 0.2rem;
+      margin-right: 1.25rem;
     }
     .subtitle {
       font-size: var(--text-color-base);
@@ -151,16 +151,16 @@ export default {
       color: var(--text-color-inverse);
       margin-right: 0.8vw;
       .item {
-        margin-left: 0.1rem;
-        padding: 0 0.06rem;
-        height: 0.2rem;
+        margin-left: 0.625rem;
+        padding: 0 0.375rem;
+        height: 1.25rem;
         background-position: center bottom;
       }
       .item:hover,
       .item-active {
         font-weight: 600;
         background: url(./images/xz.png) center bottom no-repeat;
-        background-size: 100% 0.05rem;
+        background-size: 100% 0.3125rem;
       }
     }
     .hint {
@@ -169,7 +169,7 @@ export default {
   }
   .centent {
     background: url(./images/border2.png) left top no-repeat;
-    background-size: 100% calc(100% - 0.5rem + 0vh + 0.8vh);
+    background-size: 100% calc(100% - 3.125rem + 0vh + 0.8vh);
     padding: 0vh 1vh 0.8vh;
     height: calc(100% - 5vh - 0vh - 0.8vh);
     box-sizing: border-box;
@@ -185,7 +185,7 @@ export default {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 0.5rem;
+    height: 3.125rem;
     background: url(./images/border3.png) left bottom no-repeat;
     background-size: 100% 100%;
     z-index: -1;

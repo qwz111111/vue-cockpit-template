@@ -51,7 +51,7 @@ export default {
   font-size: var(--font-size-base);
   background: rgba(4, 37, 116, 0.5);
   border: 1px solid #04519a;
-  padding: 0.04rem 0.1rem;
+  padding: 0.25rem 0.625rem;
   border-radius: var(--border-radius-base);
   cursor: pointer;
 }

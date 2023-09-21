@@ -3,7 +3,7 @@
   function resize() {
     const html = document.documentElement
     const width = html.clientWidth
-    html.style.fontSize = `${width / 19.2}px`
+    html.style.fontSize = `${width / 19.2 / 6.25}px`
   }
   window.addEventListener('resize', resize)
   resize()

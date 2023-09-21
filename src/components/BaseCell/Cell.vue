@@ -50,7 +50,7 @@ export default {
 
 <style scoped lang="less">
 .base-cell {
-  line-height: 0.3rem;
+  line-height: 1.875rem;
   align-items: flex-start;
   .lable {
     display: inline-block;

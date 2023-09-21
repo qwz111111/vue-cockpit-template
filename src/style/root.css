@@ -27,36 +27,36 @@
   /* 尺寸变量 */
 
   /* 文字尺寸 */
-  --font-size-xs: 0.12rem;
-  --font-size-sm: 0.14rem;
-  --font-size-base: 0.16rem;
-  --font-size-lg: 0.18rem;
-  --font-size-xl: 0.2rem;
-  --font-size-2xl: 0.22rem;
-  --font-size-3xl: 0.24rem;
-  --font-size-4xl: 0.26rem;
-  --font-size-5xl: 0.28rem;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.375rem;
+  --font-size-3xl: 1.5rem;
+  --font-size-4xl: 1.625rem;
+  --font-size-5xl: 1.75rem;
 
   /* 图片尺寸 */
-  --img-size-sm: 0.2rem;
-  --img-size-base: 0.26rem;
-  --img-size-lg: 0.4rem;
+  --img-size-sm: 1.25rem;
+  --img-size-base: 1.625rem;
+  --img-size-lg: 25rem;
 
   /* Border Radius */
-  --border-radius-sm: 0.02rem;
-  --border-radius-base: 0.03rem;
-  --border-radius-lg: 0.06rem;
+  --border-radius-sm: 0.125rem;
+  --border-radius-base: 0.187rem;
+  --border-radius-lg: 0.375rem;
   --border-radius-circle: 50%;
 
   /* 水平间距 */
-  --spacing-row-sm: 0.05rem;
-  --spacing-row-base: 0.1rem;
-  --spacing-row-lg: 0.15rem;
+  --spacing-row-sm: 0.312rem;
+  --spacing-row-base: 0.625rem;
+  --spacing-row-lg: 1rem;
 
   /* 垂直间距 */
-  --spacing-col-sm: 0.04rem;
-  --spacing-col-base: 0.08rem;
-  --spacing-col-lg: 0.12rem;
+  --spacing-col-sm: 0.25rem;
+  --spacing-col-base: 0.5rem;
+  --spacing-col-lg: 0.75rem;
 
   /* 透明度 */
   --opacity-disabled: 0.3; /* 组件禁用态的透明度 */
@@ -67,5 +67,5 @@
   --color-subtitle: #555555; /* 二级标题颜色 */
   --font-size-subtitle: var(--font-size-lg);
   --color-paragraph: #3f536e; /* 文章段落颜色 */
-  --font-size-paragraph: 0.15rem;
+  --font-size-paragraph: 1rem;
 }
