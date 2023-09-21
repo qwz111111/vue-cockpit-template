@@ -1,15 +1,5 @@
 import VueRouter from 'vue-router'
 
-const redirectRoutes = [
-  {
-    path: '/',
-    redirect: '/cockpit/index'
-  },
-  {
-    path: '*',
-    redirect: '/'
-  }
-]
 
 const cockpitChildren = [
   {
@@ -19,11 +9,22 @@ const cockpitChildren = [
 ]
 
 const routes = [
-  ...redirectRoutes,
+  {
+    path: '/error/not_found',
+    component: () => import('@/views/error/NotFound.vue'),
+  },
   {
     path: '/cockpit',
     component: () => import('@/views/cockpit/Layout.vue'),
     children: cockpitChildren
+  },
+  {
+    path: '/',
+    redirect: '/cockpit/index'
+  },
+  {
+    path: '*',
+    redirect: '/error/not_found'
   }
 ]
 
