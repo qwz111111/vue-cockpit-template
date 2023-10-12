@@ -1,7 +1,14 @@
 @charset "UTF-8";
 @font-face {
   font-family: 'YouSheBiaoTiHei';
-  src: url('YouSheBiaoTiHei.ttf') format('truetype');
+  src: url('http://121.43.35.5:8794/fonts/YouSheBiaoTiHei.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: '锐字真言体';
+  src: url('http://121.43.35.5:8794/fonts/锐字真言体.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }

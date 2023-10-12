@@ -40,6 +40,7 @@ export default {
       if (!this.option) return
       if (JSON.stringify(this.option) === '{}') return
 
+      if (this.myCharts) this.myCharts.dispose()
       this.myCharts = this.$echarts.init(this.$refs.baseEcharts)
       this.myCharts.setOption(this.option)
       this.myCharts.on('click', e => this.$emit('click-echarts', e))
