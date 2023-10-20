@@ -16,13 +16,14 @@ body {
 }
 ::-webkit-scrollbar {
   width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
   border-radius: 5px;
   background: #16296f;
 }
 ::-webkit-scrollbar-thumb {
-  border-radius: 6px;
+  border-radius: 5px;
   background: #718dd2;
 }
 #app {
