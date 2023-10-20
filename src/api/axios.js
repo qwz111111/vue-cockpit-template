@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 axios.defaults.withCredentials = false
-axios.defaults.timeout = 1000000
+axios.defaults.timeout = 1000 * 10
 axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest'
 axios.defaults.headers.post['Content-Type'] =
   'application/x-www-form-urlencoded'
@@ -16,10 +16,6 @@ axios.interceptors.response.use(
     if (typeof res.data !== 'object') {
       console.error('服务端异常！')
       return Promise.reject(res)
-    }
-    if (res.data.state == 'error') {
-      console.error(res.data)
-      return Promise.reject(res.data)
     }
     return res.data
   },
