@@ -18,6 +18,7 @@ export default {
   },
   mounted() {
     window.addEventListener('resize', () => this.resizeCharts())
+    this.initEcharts()
   },
   beforeDestroy() {
     if (this.mTime) clearInterval(this.mTime)
@@ -37,8 +38,7 @@ export default {
       this.$emit('click')
     },
     initEcharts() {
-      if (!this.option) return
-      if (JSON.stringify(this.option) === '{}') return
+      if (!this.option || JSON.stringify(this.option) === '{}') return
 
       if (this.myCharts) this.myCharts.dispose()
       this.myCharts = this.$echarts.init(this.$refs.baseEcharts)
@@ -67,7 +67,7 @@ export default {
           this.myCharts.dispatchAction({
             type: 'showTip',
             seriesIndex: 0,
-            dataIndex: index,
+            dataIndex: index
           })
           index++
           if (index >= length) index = 0

@@ -49,20 +49,23 @@
       </div>
     </div>
     <div class="centent">
-      <slot>
-        <img
-          class="horizontally-vertically-center none-img"
-          src="./images/kfz.png"
-          alt="开发中"
-        />
-      </slot>
+      <BaseStatus :status="status">
+        <slot>
+          <img class="none-img" src="./images/kfz.png" alt="开发中" />
+        </slot>
+      </BaseStatus>
     </div>
   </div>
 </template>
 
 <script>
+import BaseStatus from '../BaseStatus/index'
+
 export default {
   name: 'BaseBorder',
+  components: {
+    BaseStatus
+  },
   props: {
     title: {
       type: [String, Array],
@@ -88,6 +91,14 @@ export default {
       type: String,
       required: false,
       default: '0'
+    },
+    status: {
+      type: String,
+      required: false,
+      default: 'normal',
+      validator(value) {
+        return ['normal', 'loading', 'error'].includes(value)
+      }
     }
   },
   data() {
