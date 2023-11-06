@@ -126,7 +126,7 @@ export const transDate = (date, formatStr) => {
             'December'
           ][date.getMonth()]
         case 'yy':
-          return date.getFullYear().toString().substr(2)
+          return date.getFullYear().toString().substring(2)
         case 'yyyy':
           return date.getFullYear()
         case 'h':
