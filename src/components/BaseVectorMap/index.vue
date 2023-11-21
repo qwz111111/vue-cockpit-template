@@ -9,7 +9,6 @@
 import { nowSize } from '@/utils/common.js'
 import { debounce } from '@/utils/util.js'
 import axios from '@/api/axios.js'
-// import request from '@/api/request.js'
 
 export default {
   name: 'BaseVectorMap',
@@ -54,26 +53,7 @@ export default {
     async getMapData() {
       if (!this.mapData) {
         const res = await axios.get('/json/330225_full.json')
-        // console.log(res);
         this.mapData = res
-        // const params = {
-        //   service: 'WFS',
-        //   version: '1.1.0',
-        //   request: 'GetFeature',
-        //   typeName: 'xiangshanszxc:T01RegionPolygonComm',
-        //   // typeName: 'xiangshanszxc:T01RegionPolygonTown',
-        //   outputFormat: 'application/json',
-        //   srsName: 'EPSG:4326',
-        //   // cql_filter:`TownName = '涂茨镇'`
-        //   // cql_filter:`CommName = '庵后村'`
-
-        // }
-        // const res1 = await request.get('/api_demo/geoserver/ows', params)
-        // res1.features.forEach(el=>{
-        //     el.properties.name=el.properties.CommName
-        //   })
-        // console.log(res1)
-        // this.mapData = res1
       }
       this.drawMapChart(this.curMapName, this.mapData)
     },
@@ -83,7 +63,7 @@ export default {
       this.mapVector = this.$echarts.init(this.$refs.BaseVectorMap)
       this.monitor()
       this.$echarts.registerMap(mapName, mapJSON)
-      this.mapVector.setOption(this.filter(mapName))
+      this.mapVector.setOption(this.filter(mapName, mapJSON))
     },
 
     filter(mapName) {
@@ -91,8 +71,8 @@ export default {
         {
           show: true,
           map: mapName,
-          zlevel: 5,
-          top: '10%',
+          roam: true,
+          left: '32%',
           label: {
             show: true,
             color: '#fff',
@@ -108,32 +88,34 @@ export default {
               areaColor: '#d8cc50'
             }
           },
-          aspectScale: 0.85, //长宽比
-          zoom: 1.15
-        },
-        ...[
-          { top: '11.5%', color: '#033d61' },
-          { top: '12%', color: '#055a87' }
-        ].map((e, i) => {
-          return {
-            map: mapName,
-            top: e.top,
-            zlevel: 4 - i,
-            itemStyle: {
-              color: e.color, // 背景
-              borderWidth: '1', // 边框宽度
-              borderColor: e.color // 边框颜色
-            },
-            aspectScale: 0.85, //长宽比
-            zoom: 1.15
-          }
-        })
+          aspectScale: 1, //长宽比
+          zoom: 0.9,
+          regions: this.mapData.features.map((el, index) => {
+            const color = [
+              '#26a0e1',
+              '#3db6ed',
+              '#48c0f2',
+              '#5cd0f9',
+              '#26a0e1',
+              '#61d2fa',
+              '#79e2ff',
+              '#6ddbfe',
+              '#93ebff'
+            ]
+            return {
+              name: el.properties.name,
+              itemStyle: {
+                areaColor: color[index % color.length]
+              }
+            }
+          })
+        }
       ]
       const seriesData =
         this.filterPoint(this.options.series, this.mapData) || []
       const series = seriesData.map(item => {
         return {
-          type: 'effectScatter', // scatter  effectScatter
+          type: 'scatter', // scatter  effectScatter
           coordinateSystem: 'geo', // 设置坐标系类型
           data: item.data, // 设置散点位置和数据
           symbolSize: item.symbolSize || nowSize(17), // 设置散点大小
@@ -150,14 +132,10 @@ export default {
           },
           itemStyle: {
             color: item.color || '#f9c43f'
-          },
-          zlevel: 6
+          }
         }
       })
-      return {
-        geo: geo,
-        series: series
-      }
+      return { geo: geo, series: series }
     },
 
     monitor() {
@@ -173,7 +151,6 @@ export default {
     resizeCharts: debounce(function () {
       if (this.mapVector) this.mapVector.resize()
     }),
-
     filterPoint(optionsSeries, mapJSON) {
       if (!optionsSeries || optionsSeries.length === 0) return optionsSeries
       const arr = []
@@ -214,7 +191,6 @@ export default {
         }
         arr.push(array)
       }
-      console.log(arr)
       return arr
     },
 
