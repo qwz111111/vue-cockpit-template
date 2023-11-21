@@ -81,7 +81,9 @@ export default {
           },
           itemStyle: {
             areaColor: this.options?.inRange || '#148cea',
-            borderColor: '#fff'
+            borderColor: '#fff',
+            shadowColor: 'rgba(0, 0, 0, 0.5)',
+            shadowBlur: 10
           },
           emphasis: {
             itemStyle: {
