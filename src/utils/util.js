@@ -48,6 +48,20 @@ export const single = fn => {
 }
 
 /**
+ * @description 生成随机数
+ * @param {Number} min 最小值
+ * @param {Number} max 最大值
+ * @return {number}
+ * @example randomNum(0,100)
+ */
+export const randomNum = (min, max)=> {
+  if (min >= max) {
+    throw new Error('min should be less than max')
+  }
+  return Math.floor(Math.random() * (min - max) + max)
+}
+
+/**
  * 标准时间格式转化
  * @param {String} date  时间戳
  * @param {String} formatStr  时间格式，例：'yyyy年M月d日'返回'2019年9月9日'、'yyyy-MM-dd HH:mm:ss'返回'2019-09-09 14:36:49'
