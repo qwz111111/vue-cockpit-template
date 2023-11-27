@@ -18,7 +18,25 @@ import {
   Image,
   Dropdown,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  Input,
+  Button,
+  Form,
+  FormItem,
+  Option,
+  Select,
+  OptionGroup,
+  Pagination,
+  Card,
+  Table,
+  TableColumn,
+  DatePicker,
+  TimePicker,
+  Loading,
+  Slider,
+  Switch,
+  Checkbox,
+  CheckboxGroup
 } from 'element-ui'
 Vue.config.productionTip = false
 Vue.prototype.$echarts = echarts
@@ -31,7 +49,25 @@ Vue.use(Carousel)
   .use(Dropdown)
   .use(DropdownMenu)
   .use(DropdownItem)
-  
+  .use(Input)
+  .use(Button)
+  .use(Form)
+  .use(FormItem)
+  .use(Option)
+  .use(Select)
+  .use(OptionGroup)
+  .use(Pagination)
+  .use(Card)
+  .use(Table)
+  .use(TableColumn)
+  .use(DatePicker)
+  .use(TimePicker)
+  .use(Loading)
+  .use(Slider)
+  .use(Switch)
+  .use(Checkbox)
+  .use(CheckboxGroup)
+
 new Vue({
   router,
   render: h => h(App)
