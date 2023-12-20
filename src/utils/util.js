@@ -173,3 +173,85 @@ export const transDate = (date, formatStr) => {
     }
   )
 }
+
+
+/**
+ * @description 获取localStorage
+ * @param {String} key Storage名称
+ * @return {string|null}
+ * @example localGet('key')
+ */
+export const localGet = (key)=> {
+  const value = window.localStorage.getItem(key)
+  try {
+    return JSON.parse(window.localStorage.getItem(key))
+  } catch (error) {
+    return value
+  }
+}
+
+/**
+ * @description 存储localStorage
+ * @param {String} key Storage名称
+ * @param {Any} value Storage值
+ * @return {void}
+ * @example localSet('key','value')
+ */
+export const localSet = (key, value)=> {
+  window.localStorage.setItem(key, JSON.stringify(value))
+}
+
+/**
+ * @description 清除localStorage
+ * @param {String} key Storage名称
+ * @return {void}
+ * @example localRemove('key')
+ */
+export const localRemove = (key) => {
+  window.localStorage.removeItem(key)
+}
+
+/**
+ * @description 清除所有localStorage
+ * @return {void}
+ * @example localClear()
+ */
+export const localClear = () => {
+  window.localStorage.clear()
+}
+
+/**
+ * @description 判断数据类型
+ * @param {Any} val 需要判断类型的数据
+ * @return {String}
+ * @example isType([])
+ */
+export const isType = (val) => {
+  if (val === null) {
+    return 'null'
+  }
+  if (typeof val !== 'object') {
+    return typeof val
+  } else {
+    return Object.prototype.toString.call(val).slice(8, -1).toLocaleLowerCase()
+  }
+}
+
+/**
+ * @description 对象数组深克隆
+ * @param {Object} obj 源对象
+ * @return {Object}
+ * @example deepCopy({})
+ */
+export const deepCopy = (obj)=> {
+  let newObj
+  newObj = Array.isArray(obj) ? [] : {}
+  for (const attr in obj) {
+    if (typeof obj[attr] === 'object') {
+      newObj[attr] = deepCopy(obj[attr])
+    } else {
+      newObj[attr] = obj[attr]
+    }
+  }
+  return newObj
+}
