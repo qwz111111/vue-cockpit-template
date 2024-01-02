@@ -16,6 +16,11 @@ export default {
       default: true
     }
   },
+  data() {
+    return {
+      animation: true
+    }
+  },
   mounted() {
     window.addEventListener('resize', () => this.resizeCharts())
     this.initEcharts()
@@ -44,6 +49,14 @@ export default {
       this.myCharts = this.$echarts.init(this.$refs.baseEcharts)
       this.myCharts.setOption(this.option)
       this.myCharts.on('click', e => this.$emit('click-echarts', e))
+      this.myCharts.on('mousemove', e => {
+        this.animation = false
+        this.$emit('mousemove-echarts', e)
+      })
+      this.myCharts.on('globalout', e => {
+        this.animation = true
+        this.$emit('globalout-echarts', e)
+      })
       this.autoShowTip()
     },
 
@@ -63,6 +76,9 @@ export default {
       if (this.mTime) clearInterval(this.mTime)
       const autoplay = () => {
         let index = 0 //播放所在下标
+        if (!this.animation) {
+            return
+          }
         this.mTime = setInterval(() => {
           this.myCharts.dispatchAction({
             type: 'showTip',
