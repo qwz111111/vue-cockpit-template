@@ -2,7 +2,7 @@
   <div class="base-dropdown">
     <el-dropdown :trigger="trigger" @command="handleCommand">
       <span class="el-dropdown-link">
-        {{ title || options[0] }}
+        {{ value || options[0] }}
         <i class="el-icon-arrow-down el-icon--right"></i>
       </span>
       <el-dropdown-menu slot="dropdown">
@@ -18,6 +18,10 @@
 export default {
   name: 'BaseDropdown',
   props: {
+    value: {
+      type: [String, Number],
+      required: false
+    },
     options: {
       type: Array,
       required: false,
@@ -29,14 +33,9 @@ export default {
       default: 'click'
     }
   },
-  data() {
-    return {
-      title: ''
-    }
-  },
   methods: {
     handleCommand(event) {
-      this.title = event
+      this.$emit('input', event)
       this.$emit('click-dropdown', {
         target: event
       })
