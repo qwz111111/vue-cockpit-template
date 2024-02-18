@@ -1,5 +1,5 @@
 <template>
-  <span>{{ animatedNumber }}</span>
+  <span :style="{ 'font-weight': weight }">{{ animatedNumber }}</span>
 </template>
 
 <script>
@@ -10,18 +10,19 @@ export default {
   props: {
     value: {
       type: [String, Number],
-      required: false,
       default: '0'
     },
     duration: {
       type: Number,
-      required: false,
       default: 1
     },
     cycle: {
       type: Number,
-      required: false,
-      default: 6000
+      default: 5000
+    },
+    weight: {
+      type: String,
+      default: 'inherit'
     }
   },
   data() {
@@ -43,7 +44,7 @@ export default {
         }, 1100)
       }
       flag = !flag
-    }, Math.round(Math.random() * this.cycle + 3000))
+    }, Math.round(Math.random() * this.cycle + 10000))
   },
   beforeDestroy() {
     clearInterval(this.time)
