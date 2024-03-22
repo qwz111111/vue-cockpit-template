@@ -19,3 +19,10 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'SourceHanSerifCN';
+  src: url('http://121.43.35.5:8794/fonts/SourceHanSerifCN-Heavy.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
