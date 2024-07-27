@@ -21,6 +21,11 @@ export default {
       required: true
     }
   },
+  data() {
+    return {
+      player: null
+    }
+  },
   beforeDestroy() {
     this.playerDispose()
   },
@@ -34,24 +39,27 @@ export default {
     this.playerInit()
   },
   watch: {
-    src() {
-      this.playerInit()
-    }
+    src(newSrc) {
+      if (this.player) {
+        this.player.src({ src: newSrc, type: 'application/x-mpegURL' });
+      }
+    },
   },
   methods: {
     playerInit() {
-      this.playerDispose()
-      this.player = videojs(this.$refs.videoPlayer, {
-        autoplay: true, // 设置自动播放
-        muted: true, // 设置了它为true，才可实现自动播放,同时视频也被静音 （Chrome66及以上版本，禁止音视频的自动播放）
-        preload: 'auto', // 预加载
-        controls: false, // 显示播放的控件
-        sources: [
-          {
-            src: this.src,
-            type: 'application/x-mpegURL'
-          }
-        ]
+      this.$nextTick(() => {
+        this.player = videojs(this.$refs.videoPlayer, {
+          autoplay: true, // 设置自动播放
+          muted: true, // 设置了它为true，才可实现自动播放,同时视频也被静音 （Chrome66及以上版本，禁止音视频的自动播放）
+          preload: 'auto', // 预加载
+          controls: false, // 显示播放的控件
+          sources: [
+            {
+              src: this.src,
+              type: 'application/x-mpegURL'
+            }
+          ]
+        })
       })
     },
     playerPause() {
