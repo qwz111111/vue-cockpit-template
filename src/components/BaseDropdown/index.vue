@@ -1,9 +1,19 @@
 <template>
   <div class="base-dropdown">
-    <el-dropdown :trigger="trigger" @command="handleCommand">
+    <el-dropdown
+      :trigger="trigger"
+      @command="handleCommand"
+      @visible-change="visibleChange"
+    >
       <span class="el-dropdown-link">
         {{ value || options[0] }}
-        <i class="el-icon-arrow-down el-icon--right"></i>
+        <i
+          class="el-icon-arrow-right el-icon--right"
+          :style="{
+            transform: visible ? 'rotate(90deg)' : 'rotate(0deg)',
+            transition: 'all 0.3s'
+          }"
+        ></i>
       </span>
       <el-dropdown-menu slot="dropdown">
         <el-dropdown-item v-for="item in options" :key="item" :command="item">
@@ -33,12 +43,20 @@ export default {
       default: 'click'
     }
   },
+  data() {
+    return {
+      visible: false
+    }
+  },
   methods: {
     handleCommand(event) {
       this.$emit('input', event)
       this.$emit('click-dropdown', {
         target: event
       })
+    },
+    visibleChange(event) {
+      this.visible = event
     }
   }
 }
@@ -47,10 +65,10 @@ export default {
 <style scoped lang="less">
 .el-dropdown {
   color: #fff;
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-sm);
   background: rgba(4, 37, 116, 0.5);
   border: 1px solid #04519a;
-  padding: 0.25rem 0.625rem;
+  padding: 0.25rem 0.5rem;
   border-radius: var(--border-radius-base);
   cursor: pointer;
 }
