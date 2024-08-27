@@ -1,17 +1,18 @@
 import axios from 'axios'
 
-axios.defaults.withCredentials = false
-axios.defaults.timeout = 1000 * 10
-axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest'
-axios.defaults.headers.post['Content-Type'] =
+const Axios = axios.create({})
+Axios.defaults.withCredentials = false
+Axios.defaults.timeout = 1000 * 10
+Axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest'
+Axios.defaults.headers.post['Content-Type'] =
   'application/x-www-form-urlencoded'
 
-axios.interceptors.request.use(
+Axios.interceptors.request.use(
   config => config,
   error => Promise.reject(error)
 )
 // 响应拦截
-axios.interceptors.response.use(
+Axios.interceptors.response.use(
   res => {
     if (typeof res.data !== 'object') {
       console.error('服务端异常！')
