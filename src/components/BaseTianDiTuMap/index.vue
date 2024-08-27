@@ -8,27 +8,29 @@ import 'leaflet/dist/leaflet.css'
 import 'leaflet.markercluster'
 import 'leaflet.markercluster/dist/MarkerCluster.css'
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css'
-import patchLeafletMarker from '@/utils/patchLeafletMarker'
-patchLeafletMarker(L)
+import patchLeafletMarker from "@/utils/patchLeafletMarker";
+patchLeafletMarker(L);
 
 export default {
   name: 'BaseTianDiTuMap',
   props: {
     // 默认位置
-    center: {
-      type: Array,
-      required: false,
-      default: () => [29.350289, 121.8474685]
-    },
+    center: { type: Array, default: () => [29.350289, 121.8474685] },
     // 默认缩放
-    zoom: { type: Number, required: false, default: 11 },
+    zoom: { type: Number, default: 11 },
     // 是否开启聚合
-    markerClusterGroup: { type: Boolean, required: false, default: true }
+    markerClusterGroup: { type: Boolean, default: true },
+    mapType: {
+      type: String,
+      default: 'img',
+      validator: value => ['vec', 'img', 'ter'].includes(value)
+    },
+    notes: { type: Boolean, default: false }
   },
   data() {
     return {
       mapUrl: 'http://yfb.zjtoprs.com:8082',
-      geoServerUrl: '/api_map/geoserver/ows',
+      geoServerUrl: '/api_xsmap/geoserver/ows',
       geoParams: {
         service: 'WFS',
         version: '1.1.0',
@@ -57,10 +59,25 @@ export default {
     },
 
     addMapLayer() {
-      const image = L.tileLayer(
-        'http://t0.tianditu.gov.cn/img_w/wmts?tk=f1735f97460a4a732c1286703350d72b&SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TileMatrix={z}&TileCol={x}&TileRow={y}'
+      const tk = 'f1735f97460a4a732c1286703350d72b'
+      const baseMap = L.tileLayer(
+        `http://t0.tianditu.gov.cn/${this.mapType}_w/wmts?tk=${tk}&SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=${this.mapType}&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TileMatrix={z}&TileCol={x}&TileRow={y}`
       )
-      const tiandiMap = L.layerGroup([image])
+      const notesType = {
+        vec: 'cva',
+        img: 'cia',
+        ter: 'cta'
+      }
+      const notesMap = L.tileLayer(
+        `http://t0.tianditu.gov.cn/${
+          notesType[this.mapType]
+        }_w/wmts?tk=${tk}&SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=${
+          notesType[this.mapType]
+        }&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TileMatrix={z}&TileCol={x}&TileRow={y}`
+      )
+      const layerGroupMap = [baseMap]
+      this.notes && layerGroupMap.push(notesMap)
+      const tiandiMap = L.layerGroup(layerGroupMap)
       tiandiMap.setZIndex(0)
       this.mapDraw.addLayer(tiandiMap)
       this.labelLayer = L.layerGroup()
@@ -233,7 +250,6 @@ export default {
     },
 
     filterPoint(pointArray, polygonPoints) {
-      // console.log(polygonPoints);
       // return pointArray
       if (pointArray.length === 0 || polygonPoints.length === 0) return
       return pointArray.filter(el => {
